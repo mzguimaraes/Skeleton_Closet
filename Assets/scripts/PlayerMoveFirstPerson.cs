@@ -23,9 +23,7 @@ public class PlayerMoveFirstPerson : MonoBehaviour {
 
 	void FixedUpdate () {
 		if (rb.velocity.magnitude < maxSpeed) {
-			Debug.Log("Moving: " + rb.velocity.magnitude);
 			rb.AddRelativeForce(moveVec * Time.fixedDeltaTime * speed);
 		}
-//		Debug.Log(rb.velocity.magnitude);
 	}
 }
