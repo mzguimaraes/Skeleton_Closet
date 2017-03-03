@@ -4,13 +4,7 @@ using UnityEngine;
 
 public class Skeleton : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+	public List<BoneGoalPosition> goals;
+
+	//empty for now--will fill if necessary for future functionality
 }
