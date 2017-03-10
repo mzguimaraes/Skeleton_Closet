@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bone : Grabbable {
 
-	public static float proximityRadius = 3f;
+	public float proximityRadius = 3f;
 
 	public BoneGoalPosition goalPos;
 
