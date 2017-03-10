@@ -13,6 +13,10 @@ public class PlayerGrab : MonoBehaviour {
 		cam = GetComponentInChildren<Camera>();
 	}
 
+	public Grabbable getObjectCarried() {
+		return objectCarried;
+	}
+
 	void Update () {
 		if (objectCarried == null && Input.GetKeyDown(KeyCode.Mouse0)) {
 			//on click, attempt to grab an object
@@ -25,6 +29,7 @@ public class PlayerGrab : MonoBehaviour {
 					//component is grabbable and interactive--grab it!
 					objectCarried = rch.collider.gameObject.GetComponent<Grabbable>();
 					objectCarried.GetComponent<Rigidbody>().isKinematic = true;
+					objectCarried.IsBeingHeld = true;
 				}
 			}
 		}
@@ -32,6 +37,7 @@ public class PlayerGrab : MonoBehaviour {
 			//throw bone
 			if (Input.GetKeyDown(KeyCode.Mouse0)) {
 				objectCarried.GetComponent<Rigidbody>().isKinematic = false;
+				objectCarried.IsBeingHeld = false;
 				//TODO: figure out how to properly add force to the throw
 //				objectCarried.GetComponent<Rigidbody>().AddRelativeForce(cam.transform.forward * 200f);
 				objectCarried = null;

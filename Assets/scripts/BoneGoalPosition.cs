@@ -10,6 +10,7 @@ public class BoneGoalPosition : MonoBehaviour {
 		bone.gameObject.transform.position = transform.position;
 		bone.gameObject.transform.rotation = transform.rotation;
 		bone.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+		bone.IsBeingHeld = false;
 	}
 
 	void OnDrawGizmos() {
