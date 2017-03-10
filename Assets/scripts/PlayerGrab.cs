@@ -20,11 +20,21 @@ public class PlayerGrab : MonoBehaviour {
 			if (Physics.Raycast(transform.position, cam.gameObject.transform.forward, out rch, pickupRange)) {
 				if (rch.collider != null 
 					&& rch.collider.gameObject.GetComponent<Grabbable>() != null 
-					&& rch.collider.gameObject.GetComponent<Grabbable>().Interactive) {
+					&& rch.collider.gameObject.GetComponent<Grabbable>().Interactive) 
+				{
 					//component is grabbable and interactive--grab it!
 					objectCarried = rch.collider.gameObject.GetComponent<Grabbable>();
 					objectCarried.GetComponent<Rigidbody>().isKinematic = true;
 				}
+			}
+		}
+		else {
+			//throw bone
+			if (Input.GetKeyDown(KeyCode.Mouse0)) {
+				objectCarried.GetComponent<Rigidbody>().isKinematic = false;
+				//TODO: figure out how to properly add force to the throw
+//				objectCarried.GetComponent<Rigidbody>().AddRelativeForce(cam.transform.forward * 200f);
+				objectCarried = null;
 			}
 		}
 		if (objectCarried != null) {
