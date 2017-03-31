@@ -4,7 +4,7 @@ using UnityEngine;
 public class BoneGoalPosition : MonoBehaviour {
 	//put this on a GameObject to give a Bone its goal Transform
 
-//	public Mesh boneMesh; //mesh of bone assigned to this goal
+	public float proximityRadius = 1f;
 
 	public void insertBone(Bone bone) {
 		bone.gameObject.transform.position = transform.position;
@@ -14,8 +14,8 @@ public class BoneGoalPosition : MonoBehaviour {
 	}
 
 	void OnDrawGizmos() {
-		Gizmos.color = Color.blue;
-		Gizmos.DrawWireCube(transform.position, new Vector3(1f, 1f, 1f));
+		Gizmos.color = Color.red;
+		Gizmos.DrawWireCube(transform.position, Vector3.one * proximityRadius);
 		//TODO: make this gizmo bone-shaped
 //		Gizmos.DrawMesh(boneMesh);
 	}

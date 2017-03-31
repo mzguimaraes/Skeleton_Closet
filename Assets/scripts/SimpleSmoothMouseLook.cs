@@ -33,7 +33,9 @@ public class SimpleSmoothMouseLook : MonoBehaviour
 	void Update()
 	{
 		// Ensure the cursor is always locked when set
-		Cursor.lockState = lockCursor ? CursorLockMode.Locked : CursorLockMode.None;
+		//trigger this on mouseclick so webGL player can take focus properly
+		if (Input.GetKeyDown(KeyCode.Mouse0))
+			Cursor.lockState = lockCursor ? CursorLockMode.Locked : CursorLockMode.None;
 
 		// Allow the script to clamp based on a desired target value.
 		var targetOrientation = Quaternion.Euler(targetDirection);
