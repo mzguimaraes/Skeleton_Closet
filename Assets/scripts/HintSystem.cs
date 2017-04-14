@@ -5,15 +5,17 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class HintSystem : MonoBehaviour {
-	public Text hintText;
+	public Graphic hintUI;
 	public float hintDelta = 3f; //time between subsequent hint displays
 
+	private Text hintText;
 	private PlayerGrab player;
 
 	// Use this for initialization
 	void Start () {
 		player = FindObjectOfType<PlayerGrab>();
-		hintText.text = "";
+		hintText = hintUI.GetComponentInChildren<Text>();
+		hintUI.gameObject.SetActive(false);
 	}
 
 	string buildHintString(Bone bone) {
@@ -37,11 +39,12 @@ public class HintSystem : MonoBehaviour {
 		if (objectCarried != null) {
 			Bone bone = objectCarried.GetComponent<Bone>();
 			if (bone != null) {
+				hintUI.gameObject.SetActive(true);
 				hintText.text = buildHintString(bone);
 			}
 		}
 		else {
-			hintText.text = "";
+			hintUI.gameObject.SetActive(false);
 		}
 	}
 }

@@ -9,7 +9,7 @@ public class PlayerGrab : MonoBehaviour {
 	public Text debug;
 	public bool debugModeActive = false;
 
-	public float pickupRange = 5f;
+//	public float pickupRange = 5f;
 
 	private Grabbable objectCarried;
 	private Camera cam;
@@ -38,7 +38,7 @@ public class PlayerGrab : MonoBehaviour {
 			debug.text = "Shooting raycast";
 //			if (Physics.Raycast(transform.position, cam.gameObject.transform.forward, out rch, pickupRange)) {
 			if (touch.phase == TouchPhase.Began
-				&& Physics.Raycast(ray, out rch, pickupRange)) {
+				&& Physics.Raycast(ray, out rch)) {
 
 				debug.text += "Raycast hit " + rch.collider.gameObject.name;
 
@@ -70,7 +70,7 @@ public class PlayerGrab : MonoBehaviour {
 			}
 			else {
 				//carry the object in front of the camera
-				objectCarried.transform.position = cam.transform.position + cam.transform.forward * 2f;
+				objectCarried.transform.position = cam.transform.position + cam.transform.forward;
 			}
 		}
 	}
