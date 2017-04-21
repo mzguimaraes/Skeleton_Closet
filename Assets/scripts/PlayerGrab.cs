@@ -12,6 +12,10 @@ public class PlayerGrab : MonoBehaviour {
 //	public float pickupRange = 5f;
 
 	private Grabbable objectCarried;
+	public bool isCarryingObject {
+		get { return (objectCarried != null); }
+	}
+
 	private Camera cam;
 
 	void Start () {

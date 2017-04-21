@@ -6,11 +6,31 @@ public class BoneGoalPosition : MonoBehaviour {
 
 	public float proximityRadius = 1f;
 
+	private PlayerGrab player; //to activate Goal Glow
+	private bool bonePlaced = false;
+	private Light goalGlow;
+
+	void Start () {
+		player = GameObject.FindObjectOfType<PlayerGrab>();
+		goalGlow = GetComponent<Light>();
+		goalGlow.enabled = false;
+	}
+
+	void Update () {
+		if (!bonePlaced && player.isCarryingObject) {
+			goalGlow.enabled = true;
+		}
+		else {
+			goalGlow.enabled = false;
+		}
+	}
+
 	public void insertBone(Bone bone) {
 		bone.gameObject.transform.position = transform.position;
 		bone.gameObject.transform.rotation = transform.rotation;
 		bone.gameObject.GetComponent<Rigidbody>().isKinematic = true;
 		bone.IsBeingHeld = false;
+		bonePlaced = true;
 	}
 
 	void OnDrawGizmos() {
