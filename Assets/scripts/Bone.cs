@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent (typeof(Rigidbody))]
-[RequireComponent (typeof(MeshCollider))]
+[RequireComponent (typeof(Collider))]
 public class Bone : Grabbable {
 
 	public List<string> hints;
@@ -11,8 +11,15 @@ public class Bone : Grabbable {
 
 	public BoneGoalPosition goalPos;
 
+	public bool isSymmetric = false;
+	public GameObject symmetricObj;
+
 	void Start() {
 		GetComponent<MeshCollider>().convex = true;
+		GetComponent<Rigidbody>().useGravity = false;
+		if (isSymmetric) {
+			symmetricObj.SetActive(false);
+		}
 	}
 
 	public float getHeldTimer() {
@@ -24,6 +31,9 @@ public class Bone : Grabbable {
 	void Update () {
 		//if position is near goal, place it
 		if (Vector3.Distance(transform.position, goalPos.transform.position) < goalPos.proximityRadius) {
+			if (isSymmetric) {
+				symmetricObj.SetActive(true);
+			}
 			goalPos.insertBone(this);
 			Interactive = false;
 		}
