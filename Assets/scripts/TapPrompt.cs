@@ -18,14 +18,14 @@ public class TapPrompt : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		textColor = this.GetComponent<MeshRenderer> ().material.color;
-	//	playerGrabScript = GameObject.Find ("PlayerGrab").GetComponent<PlayerGrab> ();
+		playerGrabScript = GameObject.Find ("PlayerGrab").GetComponent<PlayerGrab> ();
 	//	boneGoalScript = GameObject.Find ("BoneGoalPosition").GetComponent<BoneGoalPosition> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
-		if (Input.GetKey(KeyCode.Space)) {
+		if (playerGrabScript.isCarryingObject) {
 			hasPickedUpBone = true;
 			textColor.a = 0;
 			this.GetComponent<MeshRenderer> ().material.color = textColor;
