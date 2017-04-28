@@ -23,7 +23,7 @@ public class HintSystem : MonoBehaviour {
 		for (int i = 0; i < bone.hints.Count; i ++) {
 			if (bone.getHeldTimer() > (i + 1) * hintDelta) {
 				hintString += bone.hints[i];
-				hintString += "\n";
+				hintString += "\n\n";
 			}
 			else {
 				//if a given hint is not being displayed, neither should the subsequent hints
