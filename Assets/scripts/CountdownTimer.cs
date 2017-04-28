@@ -38,7 +38,7 @@ public class CountdownTimer : MonoBehaviour {
 			stop = true;
 			minutes = 0;
 			seconds = 0;
-			//SceneManager.LoadScene(SceneManager.GetSceneByBuildIndex(0));
+			SceneManager.LoadScene(2);
 		}
 	}
 

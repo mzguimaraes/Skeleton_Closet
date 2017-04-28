@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 0388606650e3ffa46b5e5ebc533359d0
+timeCreated: 1493344136
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: KBBrainySkeleton
+  fontNames:
+  - KBBrainySkeleton
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
